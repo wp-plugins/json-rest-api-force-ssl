@@ -2,7 +2,7 @@
 /**
  * Plugin Name: JSON REST API Force SSL
  * Description: Force WP JSON REST API endpoints to always be served over HTTPS.
- * Version: 0.1.0
+ * Version: 0.1.1
  * Depends: JSON REST API
  * Author: Frankie Jarrett
  * Author URI: http://frankiejarrett.com
@@ -17,7 +17,7 @@ class JSON_REST_API_Force_SSL {
 	 *
 	 * @const string
 	 */
-	const VERSION = '0.1.0';
+	const VERSION = '0.1.1';
 
 	/**
 	 * Hold plugin instance
@@ -94,7 +94,7 @@ class JSON_REST_API_Force_SSL {
 		$json_url = esc_url_raw( $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
 		$redirect = set_url_scheme( $json_url, 'https' );
 
-		wp_redirect( $redirect, 301 );
+		wp_safe_redirect( $redirect, 301 );
 
 		exit;
 	}
